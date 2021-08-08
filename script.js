@@ -30,9 +30,13 @@ previousBtn.addEventListener('click', () => {
         currentBullet.classList.remove('lastStep')
         currentStep--
     }
-    else if (currentStep - 1 >= 0) {
+    else if (currentStep - 1 > 0) {
         currentBullet.classList.remove('done')
         currentStep--
         nextBtn.disabled = false;
+    } else if (currentStep - 1 == 0) {
+        currentBullet.classList.remove('done')
+        currentStep = 0 //currentStep resets to 0(if we reach the first index)
+        previousBtn.disabled = true
     }
 })
