@@ -6,7 +6,7 @@ previousBtn.disabled = true
 const bullets = [...document.querySelectorAll('.bullet')]
 console.log(bullets);
 
-let currentStep = 0; //starting step count from index 0.
+let currentStep = 0; //meaning no step has been covered
 
 nextBtn.addEventListener('click', () => {
     const currentBullet = bullets[currentStep]
@@ -18,7 +18,7 @@ nextBtn.addEventListener('click', () => {
     }
     else {
         currentBullet.classList.add('lastStep') //we are adding a different class to the last step that doesn't have an arrow afterwards 
-        currentStep++
+        currentStep++ //here currentStep would be equal to 4(indicating that we are on 4th step)
         nextBtn.disabled = true;
     }
 
@@ -29,11 +29,11 @@ previousBtn.addEventListener('click', () => {
     if (currentStep - 1 == 3) { //if currentStep - 1 is equal to the 3, then remove the following class from the element at index 3 of bullets array(basically the last element).
         currentBullet.classList.remove('lastStep')
         currentStep--
+        nextBtn.disabled = false;
     }
     else if (currentStep - 1 > 0) {
         currentBullet.classList.remove('done')
         currentStep--
-        nextBtn.disabled = false;
     } else if (currentStep - 1 == 0) {
         currentBullet.classList.remove('done')
         currentStep = 0 //currentStep resets to 0(if we reach the first index)
